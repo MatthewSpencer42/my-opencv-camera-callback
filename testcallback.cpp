@@ -21,7 +21,7 @@ struct CameraCallback:Camera::SceneCallback{
     	cv::Mat gray; //declare matrix for grayscale image of frame
     	cv::Mat sized; //declare matrix for resized image of frame
     	cv::CascadeClassifier cascade; //declare cascade as a cascade classifier in preparation
-    	cascade.load("/home/matthew/CTest/Transfer2/classifier/cascade.xml");//input cascade file
+    	cascade.load("cascade.xml");//input cascade file
     	resize(mat, sized,cv::Size(600,300),0,0,cv::INTER_LINEAR);//resize if needed
     		cv::cvtColor(sized,gray,CV_BGR2GRAY); //change to grayscale
     		xs.clear();
