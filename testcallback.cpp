@@ -17,9 +17,9 @@
 struct CameraCallback:Camera::SceneCallback{
     void nextScene(const cv::Mat&mat){ //takes frame, does function
         //bool x = false; //only if using if condition
-        vector<cv::Rect> xs; //declare a rectangular vector to store all found hits
-    	Mat gray; //declare matrix for grayscale image of frame
-    	Mat sized; //declare matrix for resized image of frame
+        std::vector<cv::Rect> xs; //declare a rectangular vector to store all found hits
+    	cv::Mat gray; //declare matrix for grayscale image of frame
+    	cv::Mat sized; //declare matrix for resized image of frame
     	cv::CascadeClassifier cascade; //declare cascade as a cascade classifier in preparation
     	cascade.load("/home/matthew/CTest/Transfer2/classifier/cascade.xml");//input cascade file
     	resize(mat, sized,cv::Size(600,300),0,0,cv::INTER_LINEAR);//resize if needed
@@ -38,15 +38,7 @@ struct CameraCallback:Camera::SceneCallback{
             			}
             		//maybe have value indicating if left or right, then after the for loop, decide on direction to move
         	}//add rectangles to original image and notifies direction
-        	cv::namedWindow("Image",cv::WINDOW_NORMAL);
-        	imshow("Image", sized);
-    		cv::resizeWindow("Image",1000,500);  
-        	cv::waitKey(1);//wait till user press any key
-        	char c;
-    		c = cv::pollKey();
-    		if (c==27){
-    			break;
-    		}
+        	
     }
 };
 
